@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  @apply bg-offwhite text-charcoal font-expo antialiased;
+}
+
+a {
+  @apply text-deep hover:text-gold transition-colors duration-200;
+}
+
+.container-section {
+  @apply mx-auto w-full max-w-6xl px-6 py-16;
+}
+
+.section-title {
+  @apply text-3xl font-semibold tracking-tight sm:text-4xl;
+}
+
+.section-subtitle {
+  @apply mt-4 max-w-3xl text-lg leading-relaxed text-charcoal/80;
+}
+
+.card-grid {
+  @apply mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3;
+}
+
+.card {
+  @apply rounded-3xl bg-white p-6 shadow-card transition-shadow hover:shadow-lg;
+}
+
+html[dir='rtl'] .text-start {
+  text-align: right;
+}
+
+html[dir='rtl'] .text-end {
+  text-align: left;
+}
+
+html[dir='rtl'] .md\:pl-12 {
+  padding-right: 3rem;
+  padding-left: 0;
+}
+
+html[dir='rtl'] .md\:pr-12 {
+  padding-left: 3rem;
+  padding-right: 0;
+}
