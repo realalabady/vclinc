@@ -1,4 +1,4 @@
-import type { Locale } from '@/app/[locale]/layout';
+import type { Locale } from '@/lib/locales';
 
 type NavItem = {
   label: string;

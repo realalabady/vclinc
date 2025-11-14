@@ -1,7 +1,4 @@
-'use client';
-
-import Link from 'next/link';
-import Image from 'next/image';
+import { Link } from 'react-router-dom';
 import { siteContent } from '@/data/site-content';
 import { useLocale } from '@/components/locale-provider';
 
@@ -20,13 +17,13 @@ export function Hero() {
           <p className="mt-4 text-lg leading-relaxed text-charcoal/80">{hero.subtitle}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
-              href={hero.primaryCta.href}
+              to={hero.primaryCta.href}
               className="inline-flex items-center rounded-full bg-deep px-6 py-3 text-base font-semibold text-offwhite shadow-card transition hover:bg-charcoal"
             >
               {hero.primaryCta.label}
             </Link>
             <Link
-              href={hero.secondaryCta.href}
+              to={hero.secondaryCta.href}
               className="inline-flex items-center rounded-full border border-deep px-6 py-3 text-base font-semibold text-deep transition hover:bg-deep/10"
             >
               {hero.secondaryCta.label}
@@ -34,13 +31,7 @@ export function Hero() {
           </div>
         </div>
         <div className="relative h-96 w-full">
-          <Image
-            src="/logos/v-heart.svg"
-            alt="V Clinic"
-            fill
-            className="object-contain"
-            priority
-          />
+          <img src="/logos/v-heart.svg" alt="V Clinic" className="absolute inset-0 h-full w-full object-contain" loading="lazy" />
           <div className="absolute inset-0 rounded-3xl border border-gold/40" aria-hidden />
         </div>
       </div>

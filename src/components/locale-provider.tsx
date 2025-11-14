@@ -1,7 +1,6 @@
-'use client';
-
 import { createContext, ReactNode, useContext, useEffect, useMemo } from 'react';
-import type { Locale } from '@/app/[locale]/layout';
+import { useLocation } from 'react-router-dom';
+import type { Locale } from '@/lib/locales';
 
 interface LocaleContextValue {
   locale: Locale;
@@ -12,11 +11,15 @@ interface LocaleContextValue {
 const LocaleContext = createContext<LocaleContextValue | undefined>(undefined);
 
 export function LocaleProvider({ locale, children }: { locale: Locale; children: ReactNode }) {
+  const { pathname } = useLocation();
+
   const value = useMemo<LocaleContextValue>(() => {
     const isArabic = locale === 'ar';
-    const toggleHref = isArabic ? '/en' : '/ar';
+    const pathSuffix = pathname.replace(/^\/(ar|en)/, '');
+    const nextLocale = isArabic ? 'en' : 'ar';
+    const toggleHref = `/${nextLocale}${pathSuffix}` || `/${nextLocale}`;
     return { locale, isArabic, toggleHref };
-  }, [locale]);
+  }, [locale, pathname]);
 
   useEffect(() => {
     const isArabic = locale === 'ar';

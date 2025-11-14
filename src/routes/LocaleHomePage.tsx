@@ -5,7 +5,7 @@ import { ProgramsSection } from '@/components/programs-section';
 import { Testimonials } from '@/components/testimonials';
 import { InsurancePartners } from '@/components/insurance-partners';
 
-export default function LocaleHomePage() {
+export function LocaleHomePage() {
   return (
     <>
       <Hero />

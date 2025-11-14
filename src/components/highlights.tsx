@@ -1,6 +1,4 @@
-'use client';
-
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 import { siteContent } from '@/data/site-content';
 import { useLocale } from '@/components/locale-provider';
 import { SectionBlock } from '@/components/section-block';
@@ -20,7 +18,7 @@ export function Highlights() {
     >
       <div className="card-grid">
         {highlights.map((card) => (
-          <Link key={card.title} href={card.href} className="card focus:outline-none focus:ring-2 focus:ring-gold/70">
+          <Link key={card.title} to={card.href} className="card focus:outline-none focus:ring-2 focus:ring-gold/70">
             <h3 className="text-xl font-semibold text-deep">{card.title}</h3>
             <p className="mt-3 text-sm leading-relaxed text-charcoal/70">{card.description}</p>
             <span className="mt-6 inline-flex items-center text-sm font-semibold text-deep">

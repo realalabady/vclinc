@@ -1,5 +1,3 @@
-'use client';
-
 import { siteContent } from '@/data/site-content';
 import { useLocale } from '@/components/locale-provider';
 

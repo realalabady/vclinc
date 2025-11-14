@@ -1,14 +1,11 @@
-'use client';
-
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, useLocation } from 'react-router-dom';
 import { useLocale } from '@/components/locale-provider';
 import { siteContent } from '@/data/site-content';
 import { LanguageSwitcher } from '@/components/language-switcher';
 import { Logo } from '@/components/logo';
 
 export function Navbar() {
-  const pathname = usePathname();
+  const { pathname } = useLocation();
   const { locale } = useLocale();
   const navigation = siteContent[locale].navigation;
 
@@ -22,7 +19,7 @@ export function Navbar() {
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 className={`rounded-full px-4 py-2 transition ${
                   isActive ? 'bg-gold text-charcoal shadow-sm' : 'text-charcoal/80 hover:bg-gold/20'
                 }`}
