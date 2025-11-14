@@ -1,12 +1,14 @@
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 
-export default function SiteLayout({ children }: { children: ReactNode }) {
+export function SiteLayout() {
   return (
     <div className="flex min-h-screen flex-col bg-offwhite">
       <Navbar />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1">
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
