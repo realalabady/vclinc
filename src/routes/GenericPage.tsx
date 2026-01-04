@@ -5,6 +5,9 @@ import { NotFoundPage } from '@/routes/NotFoundPage';
 const slugToKey: Record<string, PageKey> = {
   about: 'about',
   departments: 'departments',
+  obgyn: 'obgyn',
+  dermatology: 'dermatology',
+  emergency: 'emergency',
   obesity: 'obesity',
   iv: 'iv',
   consultations: 'consultations',

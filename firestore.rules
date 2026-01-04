@@ -1,0 +1,32 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // قواعد المستخدمين
+    match /users/{userId} {
+      // السماح للمستخدم بقراءة وتعديل بياناته فقط
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // قواعد المواعيد
+    match /appointments/{appointmentId} {
+      // السماح للمستخدم بقراءة مواعيده
+      allow read: if request.auth != null;
+      // السماح بإنشاء موعد جديد
+      allow create: if request.auth != null;
+      // السماح بالتعديل للمالك أو الأدمن
+      allow update, delete: if request.auth != null;
+    }
+    
+    // قواعد الرسائل
+    match /messages/{messageId} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // قواعد الإشعارات
+    match /notifications/{notificationId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+  }
+}

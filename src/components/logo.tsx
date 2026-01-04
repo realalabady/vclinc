@@ -1,26 +1,20 @@
 import { Link } from 'react-router-dom';
 import { useLocale } from '@/components/locale-provider';
 
-const logoVariants = {
-  light: {
-    src: '/logos/vclinic-light.svg',
-    alt: 'V Clinic logo on light background'
-  },
-  dark: {
-    src: '/logos/vclinic-dark.svg',
-    alt: 'V Clinic logo on deep background'
-  }
-};
-
-export function Logo({ variant = 'dark' }: { variant?: keyof typeof logoVariants }) {
+export function Logo({ variant = 'dark' }: { variant?: 'dark' | 'light' }) {
   const { locale } = useLocale();
-  const { src, alt } = logoVariants[variant];
+  const logoSrc = variant === 'light' ? '/logos/logo_laite.jpg' : '/logos/logo_dark.jpg';
+
   return (
-    <Link to={`/${locale}`} className="inline-flex items-center gap-3">
-      <span className="relative h-12 w-12 overflow-hidden rounded-2xl bg-gradient-to-br from-gold to-gold/70">
-        <img src="/logos/v-heart.svg" alt="V Clinic emblem" className="absolute inset-0 h-full w-full object-contain p-2" loading="lazy" />
-      </span>
-      <img src={src} alt={alt} width={112} height={48} className="h-12 w-28 object-contain" loading="lazy" />
+    <Link to={`/${locale}`} className="group inline-flex items-center gap-3 transition-all duration-300 hover:scale-105">
+      <div className="relative">
+        <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-gold/20 via-gold/10 to-transparent blur-lg opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <img 
+          src={logoSrc}
+          alt="V Clinic" 
+          className="relative h-14 w-auto max-w-[180px] rounded-xl object-contain transition-transform duration-300 group-hover:scale-110" 
+        />
+      </div>
     </Link>
   );
 }
