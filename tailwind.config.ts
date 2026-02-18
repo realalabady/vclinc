@@ -15,6 +15,15 @@ const config: Config = {
       },
       boxShadow: {
         card: '0 20px 60px rgba(30, 54, 58, 0.12)'
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(-4px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        }
+      },
+      animation: {
+        fadeIn: 'fadeIn 150ms ease-out'
       }
     }
   },

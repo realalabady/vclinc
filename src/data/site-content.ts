@@ -5,6 +5,13 @@ type NavItem = {
   href: string;
 };
 
+type NavDropdown = {
+  label: string;
+  children: { label: string; href: string; description?: string; icon?: string }[];
+};
+
+export type NavEntry = NavItem | NavDropdown;
+
 type SectionList = {
   title: string;
   description: string;
@@ -32,7 +39,7 @@ type PageContent = {
 };
 
 type SiteContent = {
-  navigation: NavItem[];
+  navigation: NavEntry[];
   hero: HeroContent;
   highlights: HighlightCard[];
   story: {
@@ -76,17 +83,26 @@ export const siteContent: Record<Locale, SiteContent> = {
     navigation: [
       { label: 'الرئيسية', href: '/ar' },
       { label: 'من نحن', href: '/ar/about' },
-      { label: 'الأقسام', href: '/ar/departments' },
-      { label: 'مركز البدانة والغدد', href: '/ar/obesity' },
-      { label: 'العلاج الوريدي', href: '/ar/iv' },
-      { label: 'العيادات الاستشارية', href: '/ar/consultations' },
-      { label: 'البرامج', href: '/ar/programs' },
+      {
+        label: 'الخدمات',
+        children: [
+          { label: 'الأقسام الطبية', href: '/ar/departments', description: 'جميع التخصصات تحت سقف واحد', icon: '🏥' },
+          { label: 'مركز البدانة والغدد', href: '/ar/obesity', description: 'ضبط السكري والهرمونات وإدارة الوزن', icon: '⚕️' },
+          { label: 'العلاج الوريدي', href: '/ar/iv', description: 'جلسات طاقة ومناعة وجمال', icon: '💉' },
+          { label: 'العيادات الاستشارية', href: '/ar/consultations', description: 'استشارات متخصصة مع نخبة الأطباء', icon: '👨‍⚕️' },
+          { label: 'البرامج الصحية', href: '/ar/programs', description: 'برامج متابعة بإشراف متعدد التخصصات', icon: '📋' },
+        ],
+      },
       { label: 'الطب الاتصالي', href: '/ar/telemedicine' },
-      { label: 'تجربة المريض', href: '/ar/patient-journey' },
-      { label: 'التأمين', href: '/ar/insurance' },
-      { label: 'المدونة', href: '/ar/blog' },
-      { label: 'التطبيق', href: '/ar/app' },
-      { label: 'اتصل بنا', href: '/ar/contact' }
+      {
+        label: 'المزيد',
+        children: [
+          { label: 'تجربة المريض', href: '/ar/patient-journey', description: 'رحلتك معنا خطوة بخطوة', icon: '🗺️' },
+          { label: 'التأمين', href: '/ar/insurance', description: 'شركاء التأمين الصحي', icon: '🛡️' },
+          { label: 'المدونة', href: '/ar/blog', description: 'مقالات ونصائح صحية', icon: '📝' },
+          { label: 'التطبيق', href: '/ar/app', description: 'حمّل تطبيق V Clinic', icon: '📱' },
+        ],
+      },
     ],
     hero: {
       title: 'عافية مبنية على الدليل… وأنت محورها.',
@@ -654,17 +670,26 @@ export const siteContent: Record<Locale, SiteContent> = {
     navigation: [
       { label: 'Home', href: '/en' },
       { label: 'About', href: '/en/about' },
-      { label: 'Departments', href: '/en/departments' },
-      { label: 'Obesity & Endocrine', href: '/en/obesity' },
-      { label: 'IV Therapy', href: '/en/iv' },
-      { label: 'Consulting Clinics', href: '/en/consultations' },
-      { label: 'Programs', href: '/en/programs' },
+      {
+        label: 'Services',
+        children: [
+          { label: 'Departments', href: '/en/departments', description: 'All specialties under one roof', icon: '🏥' },
+          { label: 'Obesity & Endocrine', href: '/en/obesity', description: 'Diabetes, hormones & weight management', icon: '⚕️' },
+          { label: 'IV Therapy', href: '/en/iv', description: 'Energy, immunity & beauty sessions', icon: '💉' },
+          { label: 'Consulting Clinics', href: '/en/consultations', description: 'Specialist consultations with top doctors', icon: '👨‍⚕️' },
+          { label: 'Programs', href: '/en/programs', description: 'Multi-disciplinary health programs', icon: '📋' },
+        ],
+      },
       { label: 'Telemedicine', href: '/en/telemedicine' },
-      { label: 'Patient Journey', href: '/en/patient-journey' },
-      { label: 'Insurance', href: '/en/insurance' },
-      { label: 'Blog', href: '/en/blog' },
-      { label: 'App', href: '/en/app' },
-      { label: 'Contact', href: '/en/contact' }
+      {
+        label: 'More',
+        children: [
+          { label: 'Patient Journey', href: '/en/patient-journey', description: 'Your step-by-step experience', icon: '🗺️' },
+          { label: 'Insurance', href: '/en/insurance', description: 'Our insurance partners', icon: '🛡️' },
+          { label: 'Blog', href: '/en/blog', description: 'Health articles & tips', icon: '📝' },
+          { label: 'App', href: '/en/app', description: 'Download the V Clinic app', icon: '📱' },
+        ],
+      },
     ],
     hero: {
       title: 'Evidence-based wellness, centered around you.',
